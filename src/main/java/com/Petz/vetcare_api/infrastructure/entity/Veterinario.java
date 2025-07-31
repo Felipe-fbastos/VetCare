@@ -2,14 +2,16 @@ package com.Petz.vetcare_api.infrastructure.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
+@Entity
+@Table(name = "Veterinario")
 @Builder
-@Table(name = "Tutor")
-public class Tutor {
+public class Veterinario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,5 +30,9 @@ public class Tutor {
     @Column(name = "telefone", unique = true)
     @Size(min = 11, max = 11)
     private String telefone;
+
+    @Column(name = "especializacao")
+    private String especializacao;
+
 
 }

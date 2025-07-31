@@ -3,9 +3,11 @@ package com.Petz.vetcare_api.business.service;
 import com.Petz.vetcare_api.infrastructure.entity.Tutor;
 import com.Petz.vetcare_api.infrastructure.repository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TutorService {
 
     @Autowired
