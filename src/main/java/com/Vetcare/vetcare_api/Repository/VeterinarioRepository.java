@@ -1,8 +1,9 @@
-package com.Petz.vetcare_api.infrastructure.repository;
+package com.Vetcare.vetcare_api.Repository;
 
-import com.Petz.vetcare_api.infrastructure.entity.Veterinario;
+
+import com.Vetcare.vetcare_api.Entity.Veterinario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VeterinarioRepository extends JpaRepository<Veterinario, Integer> {
-
+    boolean existsByCpf(String cpf);
 }

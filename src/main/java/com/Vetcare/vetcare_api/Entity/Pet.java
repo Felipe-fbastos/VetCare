@@ -1,20 +1,23 @@
-package com.Petz.vetcare_api.infrastructure.entity;
+package com.Vetcare.vetcare_api.Entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
+
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "Pet")
 public class Pet {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idPet")
     private int id;
 
     @Column(name = "nome")
@@ -35,6 +38,12 @@ public class Pet {
     private String raca;
 
     @Column(name = "Castrado", length = 1)
-    private String castrado;
+    private Character castrado;
+
+    @OneToMany(mappedBy = "pet")
+    private List<TutorPet> tutorPets;
+
+    @OneToMany(mappedBy = "pet")
+    private List<Consulta> consultas;
 
 }

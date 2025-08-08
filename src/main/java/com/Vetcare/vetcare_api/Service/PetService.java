@@ -1,8 +1,8 @@
-package com.Petz.vetcare_api.business.service;
+package com.Vetcare.vetcare_api.Service;
 
-import com.Petz.vetcare_api.infrastructure.entity.Pet;
-import com.Petz.vetcare_api.infrastructure.entity.Tutor;
-import com.Petz.vetcare_api.infrastructure.repository.PetRepository;
+
+import com.Vetcare.vetcare_api.Entity.Pet;
+import com.Vetcare.vetcare_api.Repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +54,7 @@ public class PetService {
                         : petEntity.getCastrado())
                 .id(petEntity.getId())
                 .build();
-
+                 repository.save(petAtualizado);
             return "Pet atualizado";
     }
 

@@ -1,10 +1,12 @@
-package com.Petz.vetcare_api.infrastructure.repository;
+package com.Vetcare.vetcare_api.Repository;
 
-import com.Petz.vetcare_api.infrastructure.entity.Tutor;
+
+import com.Vetcare.vetcare_api.Entity.Tutor;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TutorRepository extends JpaRepository<Tutor,Integer> {
 
    boolean existsById(int id);
+   boolean existsByCpf(String cpf);
 }

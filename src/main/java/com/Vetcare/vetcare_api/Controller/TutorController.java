@@ -1,7 +1,8 @@
-package com.Petz.vetcare_api.controllers;
+package com.Vetcare.vetcare_api.Controller;
 
-import com.Petz.vetcare_api.business.service.TutorService;
-import com.Petz.vetcare_api.infrastructure.entity.Tutor;
+
+import com.Vetcare.vetcare_api.Entity.Tutor;
+import com.Vetcare.vetcare_api.Service.TutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

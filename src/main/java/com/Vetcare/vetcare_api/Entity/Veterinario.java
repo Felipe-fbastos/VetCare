@@ -1,20 +1,23 @@
-package com.Petz.vetcare_api.infrastructure.entity;
+package com.Vetcare.vetcare_api.Entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+
+import java.util.List;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "Veterinario")
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Veterinario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idVeterinario")
     private int id;
 
     @Column(name = "nome")
@@ -33,6 +36,9 @@ public class Veterinario {
 
     @Column(name = "especializacao")
     private String especializacao;
+
+    @OneToMany(mappedBy = "veterinario")
+    private List<Consulta> consultas;
 
 
 }

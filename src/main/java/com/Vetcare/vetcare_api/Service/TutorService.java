@@ -1,7 +1,8 @@
-package com.Petz.vetcare_api.business.service;
+package com.Vetcare.vetcare_api.Service;
 
-import com.Petz.vetcare_api.infrastructure.entity.Tutor;
-import com.Petz.vetcare_api.infrastructure.repository.TutorRepository;
+
+import com.Vetcare.vetcare_api.Entity.Tutor;
+import com.Vetcare.vetcare_api.Repository.TutorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,13 @@ public class TutorService {
     @Autowired
     private TutorRepository repository;
 
-    public Tutor saveTutor(Tutor tutor){
-        return repository.save(tutor);
+    public String saveTutor(Tutor tutor){
+
+        if(!repository.existsByCpf(tutor.getCpf())){
+            repository.save(tutor);
+        }
+            throw new RuntimeException("Tutor já existente");
+
     }
 
     // Retorna todos os Usuarios
@@ -59,8 +65,10 @@ public class TutorService {
                         : tutorEntity.getTelefone())
                 .cpf(tutor.getCpf() != null ? tutor.getCpf() :
                         tutorEntity.getCpf())
-                .id(tutor.getId())
+                .id(tutorEntity.getId())
                 .build();
+
+        repository.save(tutorAtulizado);
 
         return "Tutor Atualizado";
     }

@@ -1,4 +1,4 @@
-package com.Petz.vetcare_api;
+package com.Vetcare.vetcare_api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

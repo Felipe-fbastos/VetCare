@@ -1,7 +1,8 @@
-package com.Petz.vetcare_api.business.service;
+package com.Vetcare.vetcare_api.Service;
 
-import com.Petz.vetcare_api.infrastructure.entity.Veterinario;
-import com.Petz.vetcare_api.infrastructure.repository.VeterinarioRepository;
+
+import com.Vetcare.vetcare_api.Entity.Veterinario;
+import com.Vetcare.vetcare_api.Repository.VeterinarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +14,13 @@ public class VeterinarioService {
     @Autowired
     private VeterinarioRepository repository;
 
-    public Veterinario saveVeterinario(Veterinario veterinario){
-        return repository.save(veterinario);
+    public String saveVeterinario(Veterinario veterinario){
+        if(!repository.existsByCpf(veterinario.getCpf())){
+            repository.save(veterinario);
+            return "Veterinario Cadastrado!";
+        }
+
+        throw new RuntimeException("Veterinario Existente");
     }
 
     public List<Veterinario> findAllVeterinario(){
@@ -58,6 +64,7 @@ public class VeterinarioService {
                 .id(veterinarioEntity.getId())
                 .build();
 
+                repository.save(veterinarioAtualizado);
                 return "Veterinario Atualizado";
     }
 
